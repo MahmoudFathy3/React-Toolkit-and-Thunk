@@ -13,10 +13,14 @@ const Books = () => {
   useEffect(()=>{
     Dispatch(GetBooks())
   },[Dispatch])
-  
 
+  const DarkTheme = JSON.parse(localStorage.getItem('Themes'));
+
+// DarkTheme={DarkTheme}
   return <div className="Books">
-      <List isLoading={isLoading} books={books} isLogin={isLogin} Dispatch={Dispatch} deleteBooks={deleteBooks}/>
+      <List isLoading={isLoading} books={books} isLogin={isLogin} Dispatch={Dispatch}
+      deleteBooks={deleteBooks} />
+      
       <BooksDetails />
   </div>;
 };

@@ -1,10 +1,11 @@
-import React, {Fragment, useRef} from 'react';
+import React, {Fragment, useRef, useEffect} from 'react';
 import './Form.css' ;
 import { useDispatch, useSelector } from 'react-redux';
 import { insetBooks } from '../../Store/bookSlice/bookSlice';
 
 const Form = () => {
   const {isLogin} = useSelector(state =>  state.AuthSlice);
+
   const dispatch = useDispatch();
   const title = useRef(null);
   const price = useRef(null);
@@ -24,9 +25,13 @@ const Form = () => {
     description.current.value = null;
   }
 
+  // Change color With Themes Mode
+  const DarkTheme = JSON.parse(localStorage.getItem('Themes'));
+  // useEffect(() => {},)
+
   return(
     <Fragment>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
       <h2>Insert Book</h2>
         <div className="mb-3">
           <label htmlFor='formGroupExampleInput'>Title</label>
@@ -36,9 +41,9 @@ const Form = () => {
           <label htmlFor='formGroupExamplenumber'>Price</label>
         <input type="number"  className="form-control" id="formGroupExamplenumber" ref={price} placeholder="Your Price" required/>
         </div>
-        <div className="form-floating mb-3">
-          <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea2" ref={description} style={{"height": "100px"}} required></textarea>
-          <label htmlFor="floatingTextarea2">Desc</label>
+        <div className="mb-3">
+          <label>Description</label>
+          <textarea className="form-control" ref={description} style={{"height": "100px"}} required></textarea>
         </div>
           <button type="submit" className="btn btn-primary" disabled={!isLogin}>Submit</button>
       </form>

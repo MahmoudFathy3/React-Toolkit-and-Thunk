@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.fixed{
+  position: fixed;
+  top: 0;
+  opacity: 1;
+}
+
